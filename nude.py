@@ -142,7 +142,7 @@ class Nude(object):
             except IndexError:
                 new_detected_regions.append([])
             for r_index in region:
-                new_detected_regeions[index].extend(detected_regions[r_index])
+                new_detected_regions[index].extend(detected_regions[r_index])
                 detected_regions[r_index] = []
 
             for region in detected_regions:
@@ -241,14 +241,14 @@ class Nude(object):
             h = 2 +((g -r)/diff)
         else:
             h = 4 +((r-g)/diff)
-            h *=60
-            if h <0:
-                h += 360
-            return [h,1.0-(3.0*(_min/_sum)),(1.0/3.0)*_max]
+        h *=60
+        if h <0:
+            h += 360
+        return [h,1.0-(3.0*(_min/_sum)),(1.0/3.0)*_max]
 
     def inspect(self):
         _image = '{} {} {}*{}'.format(self.image.filename,self.image.format,self.width,self.height)
-        return"{_image}:result={_result} message = '{_message}'".format(_image = _iamge, result=self.result, _message=self.message)
+        return"{_image}: result={_result} message = '{_message}'".format(_image = _image, _result=self.result, _message=self.message)
 
     def showSkinRegions(self):
         if self.result is None :
